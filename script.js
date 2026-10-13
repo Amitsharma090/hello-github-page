@@ -3,10 +3,10 @@ const loveButton = document.getElementById('loveButton');
 const wishText = document.getElementById('wishText');
 
 const messages = [
-  'Stay happy, stay blessed, and keep shining ✨',
-  'May your dreams come true and your heart stay full of joy 💖',
-  'You deserve the world and more, Annu! 🎂',
-  'May every day of your life feel as beautiful as your smile 🌸'
+  'तू हमेशा मुस्कुराती रहे, और जिंदगी तेरे लिए खूबसूरत बनती रहे ✨',
+  'तेरी हँसी से घर में खुशियाँ आती हैं, और तेरी खुशियों से सबका दिल मुस्कुराता है 💖',
+  'तू हमारी सबसे प्यारी अन्नू है, हमेशा ख़ुश रह और अपनी चमक जारी रख ✨',
+  'तुझे जन्मदिन की ढेर सारी शुभकामनाएँ, प्यारी नन्ही परी! 🎂💖'
 ];
 
 wishButton.addEventListener('click', () => {
@@ -15,5 +15,5 @@ wishButton.addEventListener('click', () => {
 });
 
 loveButton.addEventListener('click', () => {
-  wishText.textContent = 'Sending you all my love and warm wishes today and always 💗';
+  wishText.textContent = 'तुम्हें बहुत सारा प्यार, हँसी, खुशी और ढेर सारा शुभकामनाओं का आशीर्वाद 💗';
 });
