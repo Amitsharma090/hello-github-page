@@ -1,24 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello GitHub</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hello GitHub — Demo</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main class="container">
-      <div class="card">
-        <p class="tag">My First GitHub Project</p>
-        <h1>Hello, GitHub!</h1>
-        <p class="description">
-          This is a simple HTML page created and published on GitHub.
-          I am learning how to build and deploy projects online.
-        </p>
-        <button id="clickButton">Click Me</button>
-        <p id="message" class="message"></p>
-      </div>
+    <header class="site-header">
+      <nav class="nav container">
+        <a class="logo" href="#">Hello GitHub</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#demo">Live Demo</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="btn-ghost" href="https://github.com/Amitsharma090/hello-github-page" target="_blank" rel="noopener">View on GitHub</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero container" id="about">
+        <div class="hero-left">
+          <p class="eyebrow">Starter Project</p>
+          <h1>Hello, GitHub!</h1>
+          <p class="lead">
+            A clean, responsive starter page that demonstrates how to publish code on GitHub and some repository features you can use.
+          </p>
+
+          <p class="cta-row">
+            <a class="btn" href="https://github.com/Amitsharma090/hello-github-page" target="_blank" rel="noopener">View source</a>
+            <a class="btn-outline" href="#features">See features</a>
+          </p>
+        </div>
+        <div class="hero-right">
+          <div class="card">
+            <p class="tag">Try it</p>
+            <h2>Interactive demo</h2>
+            <p>Click the button to see a message and try editing this file on GitHub.</p>
+            <button id="clickButton">Click me</button>
+            <p id="message" class="message"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="features container" id="features">
+        <h2>What you can access in this repository</h2>
+        <p class="muted">Use the links to explore these features on GitHub for this project.</p>
+
+        <div class="grid">
+          <article class="feature">
+            <h3>Live Demo</h3>
+            <p>Published with GitHub Pages (if enabled). Provides a public URL for your site.</p>
+            <a href="https://Amitsharma090.github.io/hello-github-page" target="_blank" rel="noopener">Open demo</a>
+          </article>
+
+          <article class="feature">
+            <h3>View Source</h3>
+            <p>Browse the HTML, CSS and JavaScript files directly on GitHub.</p>
+            <a href="https://github.com/Amitsharma090/hello-github-page" target="_blank" rel="noopener">Repository</a>
+          </article>
+
+          <article class="feature">
+            <h3>Issues</h3>
+            <p>Report bugs or request features. Try creating an issue to practice collaboration.</p>
+            <a href="https://github.com/Amitsharma090/hello-github-page/issues" target="_blank" rel="noopener">Open issues</a>
+          </article>
+
+          <article class="feature">
+            <h3>Pull Requests</h3>
+            <p>Create a branch, change files, and open a Pull Request to propose changes.</p>
+            <a href="https://github.com/Amitsharma090/hello-github-page/pulls" target="_blank" rel="noopener">Open pull requests</a>
+          </article>
+
+          <article class="feature">
+            <h3>Actions (CI/CD)</h3>
+            <p>Automate checks and deployments. Add workflows to run tests or publish on push.</p>
+            <a href="https://github.com/Amitsharma090/hello-github-page/actions" target="_blank" rel="noopener">View actions</a>
+          </article>
+
+          <article class="feature">
+            <h3>Releases</h3>
+            <p>Publish versioned releases for users to download snapshots of your code.</p>
+            <a href="https://github.com/Amitsharma090/hello-github-page/releases" target="_blank" rel="noopener">Releases</a>
+          </article>
+
+          <article class="feature">
+            <h3>Wiki / Docs</h3>
+            <p>Add project documentation or a wiki for longer guides and notes.</p>
+            <a href="https://github.com/Amitsharma090/hello-github-page/wiki" target="_blank" rel="noopener">Wiki</a>
+          </article>
+
+          <article class="feature">
+            <h3>Settings</h3>
+            <p>Manage Pages, collaborators, branches, secrets, and more from the Settings tab.</p>
+            <a href="https://github.com/Amitsharma090/hello-github-page/settings" target="_blank" rel="noopener">Settings</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="demo container" id="demo">
+        <h2>How to edit this page</h2>
+        <ol>
+          <li>Open the repository on GitHub and click a file (for example index.html).</li>
+          <li>Click the pencil icon to edit the file directly in the browser, then propose the change.</li>
+          <li>Create a branch and a Pull Request, review, and merge to apply the change.</li>
+        </ol>
+        <p class="muted">Try editing the <code>index.html</code> file now on GitHub.</p>
+      </section>
+
+      <section class="contact container" id="contact">
+        <h2>Next steps</h2>
+        <p>You can:</p>
+        <ul>
+          <li>Enable GitHub Pages in the repository Settings → Pages → choose branch 'main' and root folder.</li>
+          <li>Create an Issue to ask for a feature.</li>
+          <li>Make a small change in index.html on GitHub and open a Pull Request.</li>
+          <li>Add a GitHub Action under .github/workflows to run tests automatically.</li>
+        </ul>
+        <p class="muted">If you want, I can enable Pages for you or add a simple CI workflow that runs on push.</p>
+      </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>Made by Amit • <a href="https://github.com/Amitsharma090/hello-github-page" target="_blank" rel="noopener">Source</a></small>
+      </div>
+    </footer>
 
     <script src="script.js"></script>
   </body>
