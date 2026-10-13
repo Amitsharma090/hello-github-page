@@ -1,29 +1,41 @@
-// Minimal interactive script: modal, confetti, chime generator
-const startButton = document.getElementById('startButton');
-const welcomeModal = document.getElementById('welcomeModal');
-const wishText = document.getElementById('wishText');
-const loveButton = document.getElementById('loveButton');
-const img = document.querySelector('.photo-frame img');
+document.addEventListener('DOMContentLoaded', () => {
+  const startButton = document.getElementById('startButton');
+  const welcomeModal = document.getElementById('welcomeModal');
+  const wishText = document.getElementById('wishText');
+  const loveButton = document.getElementById('loveButton');
+  const img = document.querySelector('.photo-frame img');
 
-// show modal on load
-window.addEventListener('DOMContentLoaded', () => {
-  // ensure modal is visible (it is by default)
-  // mark image loaded effect
-  if (img && img.complete) img.classList.add('loaded');
-  img && img.addEventListener('load', () => img.classList.add('loaded'));
-});
+  // image load effect
+  if (img) {
+    if (img.complete) img.classList.add('loaded');
+    img.addEventListener('load', () => img.classList.add('loaded'));
+  }
 
-startButton.addEventListener('click', async () => {
-  // close modal
-  welcomeModal.style.display = 'none';
-  // play chimes
-  playChimes();
-  // start confetti
-  startConfetti();
-});
+  // start / celebrate button
+  if (startButton) {
+    startButton.addEventListener('click', () => {
+      if (welcomeModal) welcomeModal.style.display = 'none';
+      playChimes();
+      startConfetti();
+    });
+  }
 
-loveButton.addEventListener('click', () => {
-  wishText.textContent = 'हम सब तुमसे बहुत प्यार करते हैं, अन्नू! 💖';
+  // send love button
+  if (loveButton && wishText) {
+    loveButton.addEventListener('click', () => {
+      wishText.textContent = 'हम सब तुमसे बहुत प्यार करते हैं, अन्नू! 💖';
+      // a tiny visual feedback
+      loveButton.animate(
+        [{ transform: 'scale(1)' }, { transform: 'scale(1.06)' }, { transform: 'scale(1)' }],
+        { duration: 300 }
+      );
+    });
+  }
+
+  // accessibility: allow Enter key on modal button
+  if (startButton) {
+    startButton.addEventListener('keyup', (e) => { if (e.key === 'Enter') startButton.click(); });
+  }
 });
 
 // Short chime melody using WebAudio API (no external file)
@@ -51,6 +63,7 @@ function playChimes(){
 // Simple canvas confetti
 function startConfetti(){
   const canvas = document.getElementById('confetti');
+  if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let W = canvas.width = window.innerWidth;
   let H = canvas.height = window.innerHeight;
@@ -69,7 +82,7 @@ function startConfetti(){
       tiltSpeed: rand(0.05,0.2)
     }
   }
-  for(let i=0;i<140;i++) particles.push(makeParticle());
+  for(let i=0;i<120;i++) particles.push(makeParticle());
 
   function draw(){
     ctx.clearRect(0,0,W,H);
