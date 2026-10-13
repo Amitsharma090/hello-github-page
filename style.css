@@ -1,201 +1,39 @@
-/* Birthday design */
-:root {
-  --pink-1: #ff5ca8;
-  --pink-2: #ff94c2;
-  --purple-1: #8a5cf6;
-  --purple-2: #c084fc;
-  --gold: #ffd166;
-  --cream: #fff9f3;
-  --text: #3b1f38;
-  --shadow: rgba(125, 41, 92, 0.25);
+:root{
+  --bg1: #fff7f9;
+  --accent1: #ff6bb6;
+  --accent2: #9a66ff;
+  --text: #2c1630;
 }
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#fffafc,#f0fbff 60%);color:var(--text);min-height:100vh;display:grid;place-items:center;overflow:hidden}
 
-* {
-  box-sizing: border-box;
-}
+/* subtle sun glow */
+#confetti-canvas-wrap{position:fixed;inset:0;pointer-events:none;z-index:0}
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #ffe8ef, #fbd9ff 35%, #e7f8ff 100%);
-  color: var(--text);
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
+.birthday-page{position:relative;z-index:1;padding:20px;width:100%;display:grid;place-items:center}
+.card{width:min(92vw,560px);background:rgba(255,255,255,0.9);border-radius:24px;padding:20px 20px 28px;box-shadow:0 20px 40px rgba(55,30,60,0.12);text-align:center;backdrop-filter:blur(6px)}
 
-.birthday-page {
-  position: relative;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  padding: 30px;
-}
+.photo-frame{width:220px;height:220px;margin:6px auto 14px;border-radius:50%;overflow:hidden;border:6px solid rgba(255,255,255,0.9);box-shadow:0 14px 30px rgba(110,70,100,0.12)}
+.photo-frame img{width:100%;height:100%;object-fit:cover;display:block;transform:translateY(0);transition:transform 1.2s ease;}
+.photo-frame img.loaded{transform:translateY(-6px)}
 
-.card {
-  position: relative;
-  width: min(90vw, 560px);
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  border-radius: 30px;
-  box-shadow: 0 25px 50px var(--shadow);
-  padding: 26px 24px 30px;
-  text-align: center;
-  backdrop-filter: blur(8px);
-  animation: floatCard 4s ease-in-out infinite;
-}
+h1{margin:6px 0;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--accent2)}
+.subtitle{margin:6px 0 12px;color:#5a3b52;font-weight:600}
 
-@keyframes floatCard {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
+.actions{display:flex;justify-content:center;gap:12px;margin-top:12px}
+button{border:0;padding:10px 18px;border-radius:999px;font-weight:700;cursor:pointer}
+.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;box-shadow:0 8px 20px rgba(150,80,190,0.18)}
+.secondary{background:#fff;border:1px solid rgba(150,80,190,0.12);color:var(--accent2)}
 
-.top-badge {
-  display: inline-block;
-  background: linear-gradient(90deg, var(--pink-1), var(--purple-1));
-  color: white;
-  padding: 10px 20px;
-  border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.72rem;
-  margin-bottom: 20px;
-}
+.wish-text{margin-top:14px;font-weight:700;color:#6b345e}
 
-.photo-frame {
-  width: 220px;
-  height: 220px;
-  margin: 0 auto 16px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 6px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 18px 32px rgba(144, 62, 120, 0.25);
-  background: linear-gradient(135deg, #ffd5eb, #f3ddff, #dfe7ff);
-  position: relative;
-}
+/* Modal */
+.modal{position:fixed;inset:0;background:linear-gradient(180deg,rgba(10,10,10,0.35),rgba(10,10,10,0.5));display:grid;place-items:center;z-index:5}
+.modal-content{background:linear-gradient(180deg,#fff,#fff);padding:28px;border-radius:18px;text-align:center;max-width:420px;box-shadow:0 30px 70px rgba(20,20,40,0.4);transform:translateY(0);animation:pop 420ms ease}
+@keyframes pop{0%{transform:scale(0.92);opacity:0}100%{transform:scale(1);opacity:1}}
+.modal h2{margin:0 0 8px;color:var(--accent2);font-size:1.6rem}
+.modal-sub{margin:0 0 16px;color:#5d3b52}
+.primary{padding:10px 18px}
 
-.photo-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.photo-fallback {
-  display: none;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: var(--purple-1);
-  text-align: center;
-  padding: 16px;
-}
-
-h1 {
-  margin: 0;
-  font-size: clamp(2.1rem, 4vw, 3rem);
-  color: #7a2158;
-}
-
-.subtitle {
-  margin: 12px 0 12px;
-  font-size: 1.02rem;
-  color: #6c4766;
-  font-weight: 600;
-}
-
-.message {
-  margin: 12px auto 0;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #423047;
-  max-width: 460px;
-}
-
-.message.small {
-  margin-top: 10px;
-  font-size: 0.97rem;
-  font-weight: 600;
-}
-
-.actions {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 22px;
-  flex-wrap: wrap;
-}
-
-button {
-  border: none;
-  border-radius: 999px;
-  padding: 12px 22px;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover {
-  transform: translateY(-2px) scale(1.01);
-}
-
-#wishButton {
-  background: linear-gradient(135deg, var(--pink-1), var(--purple-1));
-  color: white;
-  box-shadow: 0 10px 25px rgba(161, 75, 206, 0.32);
-}
-
-.secondary {
-  background: #fff;
-  border: 1px solid rgba(138, 92, 246, 0.22);
-  color: var(--purple-1);
-}
-
-.wish-text {
-  margin-top: 20px;
-  min-height: 24px;
-  font-weight: 700;
-  color: #8a2d72;
-  letter-spacing: 0.03em;
-}
-
-.confetti {
-  position: fixed;
-  width: 14px;
-  height: 14px;
-  border-radius: 4px;
-  opacity: 0.9;
-  animation: fall 8s linear infinite;
-  z-index: 0;
-}
-
-.confetti-1 { left: 10%; background: #ff7bbd; animation-delay: 0s; }
-.confetti-2 { left: 28%; background: #ffd166; animation-delay: 2s; }
-.confetti-3 { left: 52%; background: #7dd3fc; animation-delay: 1s; }
-.confetti-4 { left: 74%; background: #a7f3d0; animation-delay: 3s; }
-
-@keyframes fall {
-  0% { transform: translateY(-20vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 1; }
-  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-}
-
-@media (max-width: 480px) {
-  .card {
-    padding: 22px 18px 24px;
-  }
-
-  .photo-frame {
-    width: 180px;
-    height: 180px;
-  }
-
-  .message {
-    font-size: 0.95rem;
-  }
-}
+/* small screens */
+@media (max-width:480px){.photo-frame{width:170px;height:170px}.modal-content{margin:16px}}

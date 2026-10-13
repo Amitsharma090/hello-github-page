@@ -7,45 +7,36 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="sun-glow"></div>
-    <div class="beach-breeze"></div>
+    <div id="confetti-canvas-wrap"><canvas id="confetti"></canvas></div>
 
     <main class="birthday-page">
       <section class="card">
-        <div class="top-badge">Happy Birthday</div>
-
         <div class="photo-frame">
           <img
             src="WhatsApp Image 2026-10-13 at 10.50.35 PM.jpeg"
             alt="Annu enjoying the beach"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
           />
-          <div class="photo-fallback">Upload Annu's photo here</div>
         </div>
 
-        <h1>Happy Birthday, dear Annu</h1>
-        <p class="subtitle">You are our little sunshine, and your smile brightens every heart.</p>
-
-        <p class="message">
-          Aaj ka din bahut khas hai, kyunki aap hamari duniya ki sabse pyari aur khush dil ladki ho.<br />
-          Aapki muskaan se ghar me khushiyan aa jaati hain, aur aapke dil me jo shant, pyar aur meethi si hasi hai,
-          woh sabse alag hai.
-        </p>
-
-        <p class="message small">
-          Aap hamesha khush raho, aapke sapne poore ho, aur aapki zindagi me har din nayi khushi aur sukoon aaye.<br />
-          Hum sab aapko bahut pyar karte hain.<br />
-          Happy Birthday, dear Annu! 💖🎉
-        </p>
+        <h1>Happy Birthday, Annu 🎉</h1>
+        <p class="subtitle">हमारी प्यारी अन्नू — तुम्हें ढेर सारी खुशियाँ मिले।</p>
 
         <div class="actions">
-          <button id="wishButton">Make a Wish</button>
-          <button id="loveButton" class="secondary">Send Love</button>
+          <button id="loveButton">Send Love ❤️</button>
         </div>
 
-        <p id="wishText" class="wish-text">May your every dream shine like the beach sunset ✨</p>
+        <p id="wishText" class="wish-text">तुम हमेशा खुश रहो ✨</p>
       </section>
     </main>
+
+    <!-- Welcome modal that appears on open -->
+    <div id="welcomeModal" class="modal" role="dialog" aria-modal="true">
+      <div class="modal-content">
+        <h2>Happy Birthday, Annu!</h2>
+        <p class="modal-sub">आज का दिन बहुत खास — चलो जश्न मनाएँ 🎈</p>
+        <button id="startButton" class="primary">Celebrate</button>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
