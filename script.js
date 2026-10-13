@@ -1,27 +1,19 @@
-// Simple interactions for the starter page
-const button = document.getElementById('clickButton');
-const message = document.getElementById('message');
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
+const wishButton = document.getElementById('wishButton');
+const loveButton = document.getElementById('loveButton');
+const wishText = document.getElementById('wishText');
 
-if (button) {
-  button.addEventListener('click', () => {
-    message.textContent = 'You clicked the button! Nice work — try editing this file on GitHub.';
-  });
-}
+const messages = [
+  'Stay happy, stay blessed, and keep shining ✨',
+  'May your dreams come true and your heart stay full of joy 💖',
+  'You deserve the world and more, Annu! 🎂',
+  'May every day of your life feel as beautiful as your smile 🌸'
+];
 
-if (navToggle && navLinks) {
-  navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
-}
+wishButton.addEventListener('click', () => {
+  const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+  wishText.textContent = randomMessage;
+});
 
-// Smooth scroll for internal links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    if (navLinks) navLinks.classList.remove('show');
-  });
+loveButton.addEventListener('click', () => {
+  wishText.textContent = 'Sending you all my love and warm wishes today and always 💗';
 });
